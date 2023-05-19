@@ -1,25 +1,10 @@
-# Regex: A Beginner's Guide
+# Regex Matching an Email
 
-Regular expressions (regex) are powerful tools to match patterns and process text. In this guide, we'll cover an overview of regex syntax and its components. Hopefully, by the end, you'll have a better understanding of how to build regular expressions.
+This gist.md file provides an explanation of the regular expression (regex) /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, which is used to match an email address.
 
 ## Summary
 
-```javascript
-
-    /\bmessy\b/
-
-```
-
-We'll use the above regex example in this guide. This example matches the word "messy" in a text. We will cover the following regex components:
-
-- Anchors
-- Quantifiers
-- Grouping Constructs
-- Bracket Expressions
-- Character Classes
-- The OR Operator
-- Flags
-- Character Escapes
+The regex /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ is designed to validate and match email addresses. This regex ensures that the email address consists of a username, followed by the @ symbol, then the domain name, and finally, the top-level domain (TLD). In the subsequent sections, we will explain each component of this regex.
 
 ## Table of Contents
 
@@ -36,128 +21,44 @@ We'll use the above regex example in this guide. This example matches the word "
 
 ### Anchors
 
-Anchors are used to match the position of a pattern in the text. The ^ (caret) character matches the beginning of a line, and the $ (dollar sign) character matches the end of a line.
-
-The following displays the word "messy" at the beginning of a line:
-
-```javascript
-
-    /^messy/
-
-```
-
-The following displays the word "messy" at the end of a line.
-
-```javascript
-
-    /messy$/
-
-```
+The regex begins with the caret ^ and ends with the dollar sign $. These are called anchors and ensure that the regex matches the entire string. In this case, the email address should be the complete string.
 
 ### Quantifiers
 
-Quantifiers detail how many times a pattern should occur. Examples of this are as follows:
+The + and {2,6} are quantifiers used in this regex.
 
-- "*" means that the preceding pattern can occur zero or more times. An example of this is:
-
-    This matches as either "messy" or "mey"hnjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-
-    ```javascript
-
-        /mes*y/
-
-    ```
-
-- "+" means that the pattern can occur one or more times. An example of this is:
-
-    This matches as either "messy" or "mesyyy"
-
-    ```javascript
-
-        /mes+y/
-
-    ```
-- "?" means that the pattern can occur zero or one time. An example of this is:
-
-    This matches as either "messy" or "mey"
-
-    ```javascript
-
-        /mes?y/
-
-    ```
+- The + quantifier means that the preceding pattern should occur one or more times. For example, ([a-z0-9_\.-]+) matches one or more lowercase letters, numbers, underscores, dots, or hyphens for the username.
+- The {2,6} quantifier specifies a range of repetitions. In this regex, it is used to restrict the TLD to be between 2 and 6 characters long. For example, ([a-z\.]{2,6}) matches a sequence of lowercase letters or dots with a length between 2 and 6.
 
 ### Grouping Constructs
 
-Grouping constructs are used to group patterns together. This is done by way of parentheses "()". As an example:
+The regex utilizes parentheses () to create capturing groups.
 
-This would match "messy" or "cat".
-
-```javascript
-
-    /(messy|cat)/
-
-```
+- ([a-z0-9_\.-]+) captures the username part of the email address.
+- ([\da-z\.-]+) captures the domain name part of the email address.
 
 ### Bracket Expressions
 
-Bracket expressions are used to match any one of a set of characters. As an example:
+Bracket expressions, enclosed in square brackets [], specify character ranges or sets.
 
-This regex matches any one of the vowels a, e, i, o, or u.
-
-```javascript
-
-    /[aeiou]/
-
-```
+- [a-z0-9_\.-] represents a character range that includes lowercase letters, numbers, underscores, dots, and hyphens. This is used to match characters in the username.
+- [\da-z\.-] matches either a digit, lowercase letter, dot, or hyphen. This is used to match characters in the domain name.
 
 ### Character Classes
 
-Character classes are used to match any one of a set of characters. They are similar to bracket expressions, but have a different syntax. As an example:
-
-This regex matches any digit.
-
-```javascript
-
-    /\d/
-
-```
+The \d character class matches any digit. In this regex, [\da-z\.-] includes the digit class as part of the domain name.
 
 ### The OR Operator
 
-The OR operator is used to match any one of a set of patterns. The pipe | is used to separate the patterns. As an example:
-
-This would match "messy" or "cat".
-
-```javascript
-
-    /messy|cat/
-
-```
+The pipe | character is not used in this regex.
 
 ### Flags
 
-Flags are used to modify the behavior of a regex. As an example:
-
-The i flag makes the regex case-insensitive, so it matches "messy", "Messy", and "MESSY".
-
-```javascript
-
-    /messy/i
-
-```
+Flags are not used in this regex.
 
 ### Character Escapes
 
-Character escapes are used to match special characters. As an example:
-
-This regex matches a period.
-
-```javascript
-
-    /\./
-
-```
+Character escapes are not used in this regex.
 
 ## Author
 
